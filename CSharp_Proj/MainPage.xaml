@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CSharp_Proj"
+             x:Class="CSharp_Proj.MainPage">
+    <Grid x:Name="mainGrid"
+        RowDefinitions="1*, 6*, 3*"
+        ColumnDefinitions="*"
+        BackgroundColor="white">
+
+        <Label
+            Text="SLOT MACHINE"
+            FontAttributes="Bold"
+            FontSize="16"
+            Grid.Row="0"
+            BackgroundColor="#5865f2"
+            TextColor="white"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"/>
+
+        <Grid x:Name="slotGrid"
+              Grid.Row="1"
+              RowDefinitions="*, *, *, *, *"
+              ColumnDefinitions="*, *, *, *, *"
+              BackgroundColor="#36393f"
+              Padding="6">
+
+            <Image x:Name="value0" Grid.Row="0" Grid.Column="0"/>
+            <Image x:Name="value1" Grid.Row="1" Grid.Column="0"/>
+            <Image x:Name="value2" Grid.Row="2" Grid.Column="0"/>
+            <Image x:Name="value3" Grid.Row="3" Grid.Column="0"/>
+            <Image x:Name="value4" Grid.Row="4" Grid.Column="0"/>
+
+            <Image x:Name="value5" Grid.Row="0" Grid.Column="1"/>
+            <Image x:Name="value6" Grid.Row="1" Grid.Column="1"/>
+            <Image x:Name="value7" Grid.Row="2" Grid.Column="1"/>
+            <Image x:Name="value8" Grid.Row="3" Grid.Column="1"/>
+            <Image x:Name="value9" Grid.Row="4" Grid.Column="1"/>
+
+            <Image x:Name="value10" Grid.Row="0" Grid.Column="2"/>
+            <Image x:Name="value11" Grid.Row="1" Grid.Column="2"/>
+            <Image x:Name="value12" Grid.Row="2" Grid.Column="2"/>
+            <Image x:Name="value13" Grid.Row="3" Grid.Column="2"/>
+            <Image x:Name="value14" Grid.Row="4" Grid.Column="2"/>
+
+            <Image x:Name="value15" Grid.Row="0" Grid.Column="3"/>
+            <Image x:Name="value16" Grid.Row="1" Grid.Column="3"/>
+            <Image x:Name="value17" Grid.Row="2" Grid.Column="3"/>
+            <Image x:Name="value18" Grid.Row="3" Grid.Column="3"/>
+            <Image x:Name="value19" Grid.Row="4" Grid.Column="3"/>
+
+            <Image x:Name="value20" Grid.Row="0" Grid.Column="4"/>
+            <Image x:Name="value21" Grid.Row="1" Grid.Column="4"/>
+            <Image x:Name="value22" Grid.Row="2" Grid.Column="4"/>
+            <Image x:Name="value23" Grid.Row="3" Grid.Column="4"/>
+            <Image x:Name="value24" Grid.Row="4" Grid.Column="4"/>
+
+        </Grid>
+
+        <Grid x:Name="controllGrid"
+              BackgroundColor="#202225"
+              Grid.Row="2"
+              RowDefinitions="*, *, *, *, *, *, *, *, *, *"
+              ColumnDefinitions="*, *, *, *, *, *, *, *, *"
+              Padding="10">
+
+            <Label Text="Last Round: "
+                   TextColor="White"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="0"
+                   Grid.RowSpan="2"
+                   VerticalTextAlignment="Center"/>
+
+            <Label x:Name="lastRound"
+                   Text="0"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="0"
+                   Grid.RowSpan="2"
+                   BackgroundColor="White"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"/>
+
+            <Label Text="Bet Amount: "
+                   TextColor="white"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="2"
+                   Grid.RowSpan="2"
+                   VerticalTextAlignment="Center"/>
+
+            <Label x:Name="BetAmount"
+                   BindingContext="{x:Reference slider}"
+                   Text="{Binding Value}"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="2"
+                   Grid.RowSpan="2"
+                   BackgroundColor="White"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"/>
+
+            <Label Text="Saldo: "
+                   TextColor="White"
+                   Grid.Column="6"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="0"
+                   Grid.RowSpan="2"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"/>
+
+            <Label x:Name="displaySaldo"
+                   Text="0"
+                   Grid.Column="6"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="2"
+                   Grid.RowSpan="2"
+                   BackgroundColor="White"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"/>
+
+
+            <Slider
+                x:Name="slider"
+                DragCompleted="slider_DragCompleted"
+                MinimumTrackColor="White"
+                ThumbColor="#5865f2"
+                Maximum="100"
+                Value="10"
+                Grid.Column="0"
+                Grid.ColumnSpan="5"
+                Grid.Row="4"
+                Grid.RowSpan="3"/>
+
+            <Stepper
+                x:Name="stepper"
+                Minimum="1"
+                BindingContext="{x:Reference slider}"
+                Value="{Binding Value}"
+                Grid.Column="5"
+                Grid.ColumnSpan="4"
+                Grid.Row="4"
+                Grid.RowSpan="3"/>
+
+            <Button x:Name="addSaldo"
+                    Text="Add Saldo"
+                    FontSize="12"
+                    Grid.Row="7"
+                    Grid.RowSpan="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    CornerRadius="10"
+                    BackgroundColor="#5865f2"
+                    TextColor="White"
+                    Clicked="Add_Clicked"/>
+
+            <Button x:Name="bet"
+                    Text="Bet"
+                    BackgroundColor="LimeGreen"
+                    Grid.Row="7"
+                    Grid.RowSpan="3"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="3"
+                    CornerRadius="10"
+                    Clicked="Bet_Clicked"/>
+
+            <FlexLayout FlowDirection="LeftToRight"
+            Grid.Column="7"
+            Grid.ColumnSpan="2"
+            Grid.Row="7"
+            Grid.RowSpan="3">
+
+                <Label Text="Auto &#x0a;Spin"
+                       TextColor="White"
+                       VerticalTextAlignment="Center"/>
+
+                <Switch x:Name="autoSpin"
+                        OnColor="white"
+                        ThumbColor="#5865f2"/>
+            </FlexLayout>
+
+        </Grid>
+
+
+    </Grid>
+</ContentPage>
